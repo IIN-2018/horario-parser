@@ -1,0 +1,19 @@
+{
+  "name": "horario-parser",
+  "version": "1.0.0",
+  "description": "Parser simple para el horario",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Ricardo Gaona",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "cheerio": "^1.0.0-rc.3",
+    "excel2json": "^1.0.2",
+    "scrape-it": "^5.2.4",
+    "xlsx": "^0.16.9"
+  }
+}
