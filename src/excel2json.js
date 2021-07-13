@@ -100,9 +100,17 @@ module.exports = (fileName, sheetName) => {
 
             if (desired_value) {
                 switch (field) {
+                    case "Item":
+                        field = `Id`;
+                        desired_value = Number(desired_value);
+                        break;
+                    case "Sem/Grupo":
+                        field = `Semestre`;
+                        desired_value = Number(desired_value);
+                        break;
                     case "Día":
                         desired_value = formatFieldDia(desired_value);
-                        field = `Día${contador.dia++}`;
+                        field = `Dia${contador.dia++}`;
                         break;
                     case "Hora":
                         desired_value = formatFieldHora(desired_value);
@@ -111,12 +119,51 @@ module.exports = (fileName, sheetName) => {
                     case "Enfasis":
                         desired_value = ((desired_value === "-- --") ? null : desired_value);
                         break;
+                    case "Nivel":
+                        desired_value = ((desired_value === "---") ? null : desired_value);
+                        break;
+
+
                 }
 
                 if (diasSemana.includes(field)) desired_value = formatFieldDiaSemana(desired_value);
 
                 if (contador['dia'] === 5) contador['dia'] = 1;
                 if (contador['hora'] === 5) contador['hora'] = 1;
+            }
+
+            //Cambiamos los nombre de los campos con acentos y espacios
+            switch (field) {
+                case "DPTO.":
+                    field = `Departamento`;
+                    break;
+
+                case "Sección":
+                    field = `Seccion`;
+                    break;
+                case "Plataforma de aula virtual":
+                    field = `Plataforma_aula_virtual`;
+                    break;
+                case "Tít":
+                    field = `Titulo`;
+                    break;
+                case "Correo Institucional":
+                    field = `Correo_Institucional`;
+                    break;
+                case "Miércoles":
+                    field = `Miercoles`;
+                    break;
+                case "Sábado":
+                    field = `Sabado`;
+                    break;
+                case "Sigla carrera":
+                    field = `Sigla_Carrera`;
+                    break;
+                case "Fechas de clases de sábados (Turno Noche)":
+                    field = `Fechas_de_clases_de_sabados_(Turno Noche)`;
+                    break;
+
+
             }
 
             jsonRow = { ...jsonRow, [field]: desired_value };
