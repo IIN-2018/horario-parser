@@ -53,15 +53,16 @@ const getCarrera = (sigla) => {
                     for (let index = 1; index < 15; index++) {
                         const sheet = sheets[index];
                         const data = excel2json(parameters.pathname, sheet);
-
-                        console.log(`Cargado Exitosamente la carrera de ${data[0].Sigla_Carrera}`);
+                        const siglaCarrera = data[0].Sigla_Carrera;
+                        const enfasisCarerra = data[0].Enfasis;
+                        console.log(`Cargado Exitosamente la carrera de ${siglaCarrera}`);
                         carreras.push({
-                            nombre: getCarrera(data[0].Sigla_Carrera),
-                            siglas: data[0].Sigla_Carrera,
-                            enfasis: ((!data[0].Enfasis) ? null : data[0].Enfasis)
+                            nombre: getCarrera(siglaCarrera),
+                            siglas: siglaCarrera,
+                            enfasis: ((!enfasisCarerra) ? null : enfasisCarerra)
                         })
                         carrerasHorarios.push({
-                            carrera: data[0].Sigla_Carrera,
+                            carrera: siglaCarrera,
                             horario: data
                         });
                     }
