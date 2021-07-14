@@ -123,7 +123,7 @@ module.exports = (fileName, sheetName) => {
                         field = `Hora${contador.hora++}`;
                         break;
                     case "Enfasis":
-                        desired_value = ((desired_value === "-- --") ? null : desired_value);
+                        desired_value = ((desired_value === "-- --") ? null : desired_value.split(','));
                         break;
                     case "Nivel":
                         desired_value = ((desired_value === "---") ? null : desired_value);
