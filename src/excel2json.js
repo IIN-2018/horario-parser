@@ -51,16 +51,22 @@ const formatFieldDia = (value) => {
 }
 
 const formatFieldDiaSemana = (value) => {
+    if (value === ' ') return null;
+
     let newLineIndex = value.indexOf('\r');
     let firstLine = (newLineIndex > 0) ? value.slice(0, newLineIndex + 1) : value;
+
     let partes = firstLine.trim().split('-');
+
     return {
         hora_inicio: formatFieldHora(partes[0].trim()),
         hora_fin: formatFieldHora(partes[1].trim())
     }
 }
 
+
 module.exports = (fileName, sheetName) => {
+
     const headers = getHeaders(fileName, sheetName);
     const workbook = xlsx.readFile(fileName);
 
