@@ -49,10 +49,28 @@ const getCarrera = (sigla) => {
                     const carrerasHorarios = [];
                     //Cargar las carreras en formato json
                     const carreras = [];
-                    const sheets = file.SheetNames;
-                    for (let index = 1; index < 15; index++) {
-                        const sheet = sheets[index];
+                    const siglasCarreras = [
+                        "IAE",
+                        "ICM",
+                        "IEK",
+                        "IEL",
+                        "IEN",
+                        "IIN",
+                        "IMK",
+                        "ISP",
+                        "LCA",
+                        "LCI",
+                        "LCIk",
+                        "LEL",
+                        "LGH",
+                        "TSE"
+                    ];
+
+                    for (let index = 0; index < siglasCarreras.length; index++) {
+
+                        const sheet = siglasCarreras[index];
                         const data = excel2json(parameters.pathname, sheet);
+                        
                         const siglaCarrera = data[0].Sigla_Carrera;
                         const enfasisCarerra = data[0].Enfasis;
                         console.log(`Cargado Exitosamente la carrera de ${siglaCarrera}`);
@@ -72,12 +90,6 @@ const getCarrera = (sigla) => {
 
                     const jsonDataCarreras = JSON.stringify(carreras);
                     fs.writeFileSync(`carreras.json`, jsonDataCarreras);
-
-                    // const data = excel2json(parameters.pathname, parameters.sheets.IIN);
-                    // const jsonData = JSON.stringify(data);
-                    // fs.writeFileSync('horario.json', jsonData);
-
-
                 })
                 .catch(err => {
                     console.log('Download Error: ', err);
