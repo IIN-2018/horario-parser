@@ -19,7 +19,7 @@ module.exports = async function downloadFile(url, filePath) {
                 reject(new Error(errmess));
                 return;
             }
-            
+
             fileInfo = {
                 mime: response.headers['content-type'],
                 size: parseInt(response.headers['content-length'], 10),
@@ -27,23 +27,25 @@ module.exports = async function downloadFile(url, filePath) {
 
             response.pipe(file);
         };
-       
 
-        let req = https.request(url, callback);
+
+        let req = https.request(url, {
+            rejectUnauthorized: false,
+        }, callback);
         req.setHeader('User-Agent', ' Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36');
         req.end();
 
 
-    file
-        .on('finish', () => resolve(fileInfo))
-        .on('error', errmess => {
-            fs.unlink(filePath, () => reject(err));
-        });
+        file
+            .on('finish', () => resolve(fileInfo))
+            .on('error', errmess => {
+                fs.unlink(filePath, () => reject(err));
+            });
 
-    req
-        .on('error', err => {
-            fs.unlink(filePath, () => reject(err));
-        })
-        .end();
-});
+        req
+            .on('error', err => {
+                fs.unlink(filePath, () => reject(err));
+            })
+            .end();
+    });
 }
