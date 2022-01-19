@@ -1,3 +1,4 @@
 node_modules
-public/
-horario.json
+public/carreras.json
+public/horario.json
+horario.xslx
