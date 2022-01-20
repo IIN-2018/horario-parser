@@ -38,7 +38,7 @@ const downloadHorarioExcel = async (url, filePath) => {
 
         file
             .on('finish', () => resolve(fileInfo))
-            .on('error', errmess => {
+            .on('error', err => {
                 fs.unlink(filePath, () => reject(err));
             });
 
