@@ -2,7 +2,7 @@ const fs = require('fs');
 const http = require('http');
 const https = require('https');
 
-module.exports = async function downloadFile(url, filePath) {
+const downloadHorarioExcel = async (url, filePath) => {
     //Descomentar si es http
     //const proto = !url.charAt(4).localeCompare('s') ? https : http;
 
@@ -48,4 +48,8 @@ module.exports = async function downloadFile(url, filePath) {
             })
             .end();
     });
+}
+
+module.exports = {
+    downloadHorarioExcel,
 }
