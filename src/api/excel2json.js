@@ -216,12 +216,6 @@ const parseExcel = async () => {
             });
         }
 
-        const jsonData = JSON.stringify(carrerasHorarios);
-        fs.writeFile(`public/horario.json`, jsonData, (err) => {
-            if (err) throw err;
-            console.log('El archivo horario.json ha sido creado exitosamente');
-        });
-
         //Si la carrera tiene mas de una enfasis, 
         //Se crea una nueva carrera por cada enfasis
         const carrerasConMasDeUnEnfasis = carreras.filter(carrera => {
@@ -243,11 +237,11 @@ const parseExcel = async () => {
             });
         }
 
-        const jsonDataCarreras = JSON.stringify([...carreras, ...nuevasCarreras]);
-        fs.writeFile(`public/carreras.json`, jsonDataCarreras, (err) => {
-            if (err) throw err;
-            console.log('El archivo carreras.json ha sido creado exitosamente');
-        });
+        return {
+            carreras: [...carreras, ...nuevasCarreras],
+            horarios: carrerasHorarios
+        }
+
     } catch (error) {
         console.log(error);
         throw new Error(`Error al parsear el archivo excel: ${error}`);
@@ -258,3 +252,22 @@ const parseExcel = async () => {
 module.exports = {
     parseExcel
 }
+
+function createCarrerasJson(carreras, nuevasCarreras) {
+    const jsonDataCarreras = JSON.stringify([...carreras, ...nuevasCarreras]);
+    fs.writeFile(`public/carreras.json`, jsonDataCarreras, (err) => {
+        if (err)
+            throw err;
+        console.log('El archivo carreras.json ha sido creado exitosamente');
+    });
+}
+
+function createHorarioJson(carrerasHorarios) {
+    const jsonData = JSON.stringify(carrerasHorarios);
+    fs.writeFile(`public/horario.json`, jsonData, (err) => {
+        if (err)
+            throw err;
+        console.log('El archivo horario.json ha sido creado exitosamente');
+    });
+}
+
