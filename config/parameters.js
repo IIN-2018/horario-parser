@@ -1,5 +1,6 @@
 module.exports = {
     url: 'https://www.pol.una.py/academico/horarios-de-clases-y-examenes/',
+    directory: './public/',
     pathname: './public/horario.xlsx',
     sheets: [
         "IAE",

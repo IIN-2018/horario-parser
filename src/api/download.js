@@ -1,12 +1,18 @@
 const fs = require('fs');
 const http = require('http');
 const https = require('https');
+const parameters = require('../../config/parameters');
 
 const downloadHorarioExcel = async (url, filePath) => {
     //Descomentar si es http
     //const proto = !url.charAt(4).localeCompare('s') ? https : http;
 
     return new Promise((resolve, reject) => {
+
+        if(!fs.existsSync(parameters.directory)){
+            fs.mkdirSync(parameters.directory);
+        }
+        
         const file = fs.createWriteStream(filePath);
         let fileInfo = null;
 
