@@ -1,6 +1,6 @@
 var xlsx = require('xlsx');
 const fs = require('fs');
-const parameters = require('../config/parameters.js');
+const parameters = require('../../config/parameters.js');
 
 
 const columnsExcel = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
