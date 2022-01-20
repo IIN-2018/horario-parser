@@ -18,8 +18,6 @@ const completeScrapper = () => {
         });
 }
 
-completeScrapper();
-
 module.exports = {
     completeScrapper
 }
