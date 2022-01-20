@@ -7,7 +7,7 @@ const completeScrapper = async () => {
     scrapper(parameters.url)
         .then(link => {
             downloadHorarioExcel(link, parameters.pathname)
-                .then(() => {
+                .then(async () => {
                     const { carreras, horarios } = await parseExcel();
                     return {
                         carreras,
