@@ -1,4 +1,7 @@
 var xlsx = require('xlsx');
+const fs = require('fs');
+const parameters = require('../config/parameters.js');
+
 
 const columnsExcel = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const diasSemana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
@@ -64,9 +67,7 @@ const formatFieldDiaSemana = (value) => {
     }
 }
 
-
-module.exports = (fileName, sheetName) => {
-
+const convertExcel2Json = (fileName, sheetName) => {
     const headers = getHeaders(fileName, sheetName);
     const workbook = xlsx.readFile(fileName);
 
@@ -183,4 +184,77 @@ module.exports = (fileName, sheetName) => {
     }
 
     return jsonObject;
+}
+
+const parseExcel = async () => {
+    try {
+        //Cargar todos los horarios de las carreras en un solo JSON recorriendo cada sheet de excel
+        let carrerasHorarios = [];
+        //Cargar las carreras en formato json
+        let carreras = [];
+
+        //Recorrer todos los sheets del excel
+        for (let index = 0; index < parameters.sheets.length; index++) {
+            const sheet = parameters.sheets[index];
+            const data = convertExcel2Json(parameters.pathname, sheet);
+
+            const siglaCarrera = data[0].Sigla_Carrera;
+            const enfasisCarerra = data[0].Enfasis;
+
+            //Cargamos la Carrera
+            carreras.push({
+                nombre: parameters.carreras[siglaCarrera],
+                siglas: siglaCarrera,
+                enfasis: ((!enfasisCarerra) ? null : enfasisCarerra)
+            })
+            console.log(`Cargado Exitosamente la carrera de ${siglaCarrera}`);
+
+            //Cargamos el Horario de la Carrera
+            carrerasHorarios.push({
+                carrera: siglaCarrera,
+                horario: data
+            });
+        }
+
+        const jsonData = JSON.stringify(carrerasHorarios);
+        fs.writeFile(`public/horario.json`, jsonData, (err) => {
+            if (err) throw err;
+            console.log('El archivo horario.json ha sido creado exitosamente');
+        });
+
+        //Si la carrera tiene mas de una enfasis, 
+        //Se crea una nueva carrera por cada enfasis
+        const carrerasConMasDeUnEnfasis = carreras.filter(carrera => {
+            return carrera.enfasis != null && carrera.enfasis.length > 1;
+        });
+
+        carreras = carreras.filter(carrera => {
+            return carrera.enfasis == null || carrera.enfasis.length == 1;
+        });
+
+        const nuevasCarreras = [];
+        for (const carrera of carrerasConMasDeUnEnfasis) {
+            carrera.enfasis.forEach(enfasis => {
+                nuevasCarreras.push({
+                    nombre: carrera.nombre,
+                    siglas: carrera.siglas,
+                    enfasis: enfasis
+                });
+            });
+        }
+
+        const jsonDataCarreras = JSON.stringify([...carreras, ...nuevasCarreras]);
+        fs.writeFile(`public/carreras.json`, jsonDataCarreras, (err) => {
+            if (err) throw err;
+            console.log('El archivo carreras.json ha sido creado exitosamente');
+        });
+    } catch (error) {
+        console.log(error);
+        throw new Error(`Error al parsear el archivo excel: ${error}`);
+    }
+}
+
+
+module.exports = {
+    parseExcel
 }
