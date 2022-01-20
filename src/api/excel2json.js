@@ -243,6 +243,10 @@ const parseExcel = async () => {
             });
         }
 
+        if (!fs.existsSync("public/")) {
+            fs.mkdirSync("public/");
+        }
+
         const jsonDataCarreras = JSON.stringify([...carreras, ...nuevasCarreras]);
         fs.writeFile(`public/carreras.json`, jsonDataCarreras, (err) => {
             if (err) throw err;
