@@ -1,14 +1,30 @@
 {
-  "name": "horario-parser",
-  "version": "1.0.0",
-  "description": "Parser simple para el horario",
-  "main": "index.js",
+  "name": "@iin-2018/horario-parser",
+  "version": "0.1.0",
+  "description": "Web Scraping al horario de clases de la UNA. Descarga el excel y parsea a un JSON",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node src/index.js",
+    "deploy": "npm publish",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Ricardo Gaona",
+  "author": {
+    "name": "Ricardo Gaona",
+    "email": "gaonaricardo06946@gmail.com",
+    "url": "https://github.com/ricardogaona"
+  },
+  "contributors": [
+    {
+      "name": "Matias Ramirez",
+      "email": "ramirezmatias946@gmail.com",
+      "url": "https://github.com/ramirezsebas"
+    }
+  ],
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IIN-2018/horario-parser.git"
+  },
   "dependencies": {
     "axios": "^0.21.0",
     "cheerio": "^1.0.0-rc.3",
