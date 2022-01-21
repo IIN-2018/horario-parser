@@ -1,4 +1,4 @@
-const { parseExcel } = require("../api/excel2json")
+const { parseExcel, getHeaders } = require("../api/excel2json")
 const fs = require("fs");
 
 describe('Parsear el Excel del Horario a Json', () => {
@@ -8,15 +8,15 @@ describe('Parsear el Excel del Horario a Json', () => {
     });
 
     // test('Parsear el excel', async () => {
-    //     expect(async () => {
 
-    //         let data = await parseExcel()
-    //         expect(data).toEqual({
-    //             carreras: [],
-    //             horarios: [],
-    //         });
+    //     let data = getHeaders('public/horario.xlsx', 'IIN');
 
-    //     }).toThrow(Error);
+    //     expect(data).toEqual({
+    //         carreras: [],
+    //         horarios: [],
+    //     });
+
+
 
     // })
 
