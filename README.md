@@ -21,7 +21,11 @@ Luego te va a pedir username, password (Que seria token personal) y correo.
 ## API
 completeScrapper()
 Funcion que realiza ya el scrapping, la descarga y la conversion del excel a json.
-Tiene que generarte en tu proyecto los JSONs en la carpeta public.
+Returna un objeto:
+{
+    carreras:[],
+    horarios:[]
+}
 
 ### Dependencias
     "cheerio": "^1.0.0-rc.3" //Permite realizar web scraping
