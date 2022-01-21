@@ -4,9 +4,9 @@ const { parseExcel } = require('./api/excel2json.js');
 const parameters = require('../config/parameters.js');
 
 const completeScrapper = async () => {
-    scrapper(parameters.url)
+    return scrapper(parameters.url)
         .then(link => {
-            downloadHorarioExcel(link, parameters.pathname)
+            return downloadHorarioExcel(link, parameters.pathname)
                 .then(async () => {
                     const { carreras, horarios } = await parseExcel();
                     return {
