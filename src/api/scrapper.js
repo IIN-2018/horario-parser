@@ -1,5 +1,5 @@
 const requestPromise = require('request-promise');
-const cheerio = require('cheerio')
+const cheerio = require('cheerio');
 
 const getHtmlPoli = async (url) => {
     try {
