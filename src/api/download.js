@@ -9,10 +9,12 @@ const downloadHorarioExcel = async (url, filePath) => {
 
     return new Promise((resolve, reject) => {
 
-        if(!fs.existsSync(parameters.directory)){
-            fs.mkdirSync(parameters.directory);
+        if (!fs.existsSync(parameters.directory)) {
+            fs.mkdirSync(parameters.directory, {
+                mode: 0o777
+            });
         }
-        
+
         const file = fs.createWriteStream(filePath);
         let fileInfo = null;
 
