@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "deploy": "npm publish",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --verbose"
   },
   "author": {
     "name": "Ricardo Gaona",
@@ -26,11 +26,14 @@
     "url": "git+https://github.com/IIN-2018/horario-parser.git"
   },
   "dependencies": {
-    "axios": "^0.21.0",
+    "axios": "^0.25.0",
     "cheerio": "^1.0.0-rc.3",
     "excel2json": "^1.0.2",
     "request-promise": "^4.2.6",
-    "scrape-it": "^5.2.4",
-    "xlsx": "^0.16.9"
+    "scrape-it": "^5.3.2",
+    "xlsx": "^0.17.5"
+  },
+  "devDependencies": {
+    "jest": "^27.4.7"
   }
 }
