@@ -252,22 +252,3 @@ const parseExcel = async () => {
 module.exports = {
     parseExcel
 }
-
-function createCarrerasJson(carreras, nuevasCarreras) {
-    const jsonDataCarreras = JSON.stringify([...carreras, ...nuevasCarreras]);
-    fs.writeFile(`public/carreras.json`, jsonDataCarreras, (err) => {
-        if (err)
-            throw err;
-        console.log('El archivo carreras.json ha sido creado exitosamente');
-    });
-}
-
-function createHorarioJson(carrerasHorarios) {
-    const jsonData = JSON.stringify(carrerasHorarios);
-    fs.writeFile(`public/horario.json`, jsonData, (err) => {
-        if (err)
-            throw err;
-        console.log('El archivo horario.json ha sido creado exitosamente');
-    });
-}
-
