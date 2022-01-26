@@ -1,15 +1,12 @@
 # Horario Parser 1.0.0
 Script que me permite extraer los Datos del Excel de Horario de la Facultad y convertir en formato JSON el Horario y Carreras.
 
-## Algoritmo
+## Algoritmo del completeScrapperParser()
 1. Utilizando Web Scraping obtenemos el enlace de descarga del excel de los horarios de la pagina https://www.pol.una.py/academico/horarios-de-clases-y-examenes/
 2. Descargamos el excel en la carpeta public 
-3. Convertimos el excel en un formato JSON. 
+3. De la Informacion del excel obtenemos todas las carreras y horarios de las carreras.
+4. Retornamos un objeto con una lista de carreras y lista de horarios
 
-## Para poder usar:
-```bash
-    npm i @iin-2018/horario-parser
-```
 
 Podes correr npm run test para probar las funciones.
 
