@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node src/index.js",
     "deploy": "npm publish",
-    "test": "jest --verbose"
+    "test": "jest --verbose",
+    "release": "standard-version"
   },
   "author": {
     "name": "Ricardo Gaona",
@@ -32,6 +33,7 @@
     "xlsx": "^0.17.5"
   },
   "devDependencies": {
-    "jest": "^27.4.7"
+    "jest": "^27.4.7",
+    "standard-version": "^9.3.2"
   }
 }
