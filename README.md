@@ -6,11 +6,10 @@ Script que me permite extraer los Datos del Excel de Horario de la Facultad y co
 2. Descargamos el excel en la carpeta public 
 3. Convertimos el excel en un formato JSON. 
 
-## Para poder usar ejecutar:
+## Para poder usar:
 ```bash
-    npm login --registry=https://npm.pkg.github.com --scope=@iin-2018
+    npm i @iin-2018/horario-parser
 ```
-Luego te va a pedir username, password (Que seria token personal) y correo.
 
 Podes correr npm run test para probar las funciones.
 
@@ -38,5 +37,4 @@ Retorna el enlace de la Descarga del Excel.
     "axios": "^4.2.6", //Realizar una peticion a la pagina
     "xlsx": "^0.16.9" //Para extraer la informacion del excel y convertir en JSON
 
-### Obs:
-Tuve problemas para windows
+### Si tiene algun problema levanten un issue.
