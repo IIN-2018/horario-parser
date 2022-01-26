@@ -12,6 +12,8 @@ Script que me permite extraer los Datos del Excel de Horario de la Facultad y co
 ```
 Luego te va a pedir username, password (Que seria token personal) y correo.
 
+Podes correr npm run test para probar las funciones.
+
 ## Instalacion
 ```bash
     npm install @iin-2018/mallaparser@1.0.0
