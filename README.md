@@ -1,4 +1,4 @@
-# Horario Parser
+# Horario Parser 1.0.0
 Script que me permite extraer los Datos del Excel de Horario de la Facultad y convertir en formato JSON el Horario y Carreras.
 
 ## Algoritmo
@@ -15,9 +15,9 @@ Podes correr npm run test para probar las funciones.
 
 ## Instalacion
 ```bash
-    npm install @iin-2018/mallaparser@1.0.0
+    npm install @iin-2018/mallaparser
     or
-    yarn add @iin-2018/mallaparser@1.0.0
+    yarn add @iin-2018/mallaparser
 ```
 ## API
 completeScrapperParser()
@@ -27,10 +27,27 @@ Retorna un objeto:
     carreras:[],
     horarios:[]
 }
+### Como usar:
+```javascript
+const { completeScrapperParser } = require('@iin-2018/horario-parser');
+
+completeScrapperParser().then(console.log);
+```
 
 Parser(url)
 Funcion que recibe la URL de la Pagina de la poli donde esta el link del horario.
 Retorna el enlace de la Descarga del Excel.
+
+### Como usar:
+```javascript
+const { scrapper } = require('@iin-2018/horario-parser');
+
+const enlace = 'https://www.pol.una.py/academico/horarios-de-clases-y-examenes/';
+
+scrapper(enlace).then((link) => {
+    console.log(link);
+});
+```
 
 ### Dependencias
     "cheerio": "^1.0.0-rc.3" //Permite realizar web scraping
