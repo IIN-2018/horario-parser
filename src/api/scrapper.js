@@ -1,5 +1,6 @@
-const requestPromise = require('request-promise');
 const cheerio = require('cheerio');
+const { default: axios } = require('axios');
+const https = require('https');
 
 const getHtmlPoli = async (url) => {
     try {
@@ -9,8 +10,15 @@ const getHtmlPoli = async (url) => {
             },
             rejectUnauthorized: false,
         };
-        const html = await requestPromise(url, options);
-        return cheerio.load(html);
+        const html = await axios(url, {
+            headers:{
+                'User-Agent': ' Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+            },
+            httpsAgent: new https.Agent({
+                rejectUnauthorized: false
+            })
+        });
+        return cheerio.load(html.data);
     } catch (error) {
         throw new Error(`Error al obtener el html de la pagina: ${url}\n${error}`);
     }
