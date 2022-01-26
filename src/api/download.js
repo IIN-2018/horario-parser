@@ -3,7 +3,14 @@ const http = require('http');
 const https = require('https');
 const parameters = require('../../config/parameters');
 
-const downloadHorarioExcel = async (url, filePath) => {
+/**
+ * 
+ * @param {string} url Enlace del Horario de la Poli
+ * @param {string} fileDownloadPath Path de donde sera descargado el excel 
+ * @returns Promesa que al finalizar correctamente descarga el excel en el path indicado
+ */
+const downloadHorarioExcel = async (url, fileDownloadPath) => {
+    //TODO: Implementar en caso de HTTP (No es urgente)
     //Descomentar si es http
     //const proto = !url.charAt(4).localeCompare('s') ? https : http;
 
@@ -15,7 +22,7 @@ const downloadHorarioExcel = async (url, filePath) => {
             });
         }
 
-        const file = fs.createWriteStream(filePath);
+        const file = fs.createWriteStream(fileDownloadPath);
         let fileInfo = null;
 
         const callback = response => {
@@ -47,12 +54,12 @@ const downloadHorarioExcel = async (url, filePath) => {
         file
             .on('finish', () => resolve(fileInfo))
             .on('error', err => {
-                fs.unlink(filePath, () => reject(err));
+                fs.unlink(fileDownloadPath, () => reject(err));
             });
 
         req
             .on('error', err => {
-                fs.unlink(filePath, () => reject(err));
+                fs.unlink(fileDownloadPath, () => reject(err));
             })
             .end();
     });
