@@ -8,3 +8,5 @@ All notable changes to this project will be documented in this file. See [standa
 3. Updated all dependencies to latest versions.
 4. Exported scrapper function that obtains the Link of the excel.
 5. Changed completeScrapper to completeScrapperParser
+### 1.0.1 (2022-01-26)
+1. Documentation

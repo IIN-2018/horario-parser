@@ -1,6 +1,6 @@
 {
   "name": "@iin-2018/horario-parser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Web Scraping al horario de clases de la UNA. Descarga el excel y parsea a un JSON",
   "main": "src/index.js",
   "scripts": {
