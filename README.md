@@ -21,7 +21,7 @@ Luego te va a pedir username, password (Que seria token personal) y correo.
 ## API
 completeScrapper()
 Funcion que realiza ya el scrapping, la descarga y la conversion del excel a json.
-Returna un objeto:
+Retorna un objeto:
 {
     carreras:[],
     horarios:[]
@@ -29,7 +29,7 @@ Returna un objeto:
 
 ### Dependencias
     "cheerio": "^1.0.0-rc.3" //Permite realizar web scraping
-    "request-promise": "^4.2.6", //Realizar una peticion a la pagina
+    "axios": "^4.2.6", //Realizar una peticion a la pagina
     "xlsx": "^0.16.9" //Para extraer la informacion del excel y convertir en JSON
 
 ### Obs:
