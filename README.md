@@ -21,13 +21,17 @@ Podes correr npm run test para probar las funciones.
     yarn add @iin-2018/mallaparser@1.0.0
 ```
 ## API
-completeScrapper()
+completeScrapperParser()
 Funcion que realiza ya el scrapping, la descarga y la conversion del excel a json.
 Retorna un objeto:
 {
     carreras:[],
     horarios:[]
 }
+
+Parser(url)
+Funcion que recibe la URL de la Pagina de la poli donde esta el link del horario.
+Retorna el enlace de la Descarga del Excel.
 
 ### Dependencias
     "cheerio": "^1.0.0-rc.3" //Permite realizar web scraping
