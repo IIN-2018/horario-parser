@@ -28,8 +28,7 @@
   },
   "dependencies": {
     "axios": "^0.25.0",
-    "cheerio": "^1.0.0-rc.3",
-    "excel2json": "^1.0.2",
+    "cheerio": "^1.0.0-rc.10",
     "xlsx": "^0.17.5"
   },
   "devDependencies": {
