@@ -173,7 +173,7 @@ const convertExcel2Json = (fileName, sheetName) => {
       }
 
 
-      jsonRow = { ...jsonRow, [field.toLowerCase()]: desiredValue ? removeAccents(desiredValue) : desiredValue };
+      jsonRow = { ...jsonRow, [field.toLowerCase()]: desiredValue };
 
     }
     jsonObject.push(jsonRow);
