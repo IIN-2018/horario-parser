@@ -16,10 +16,8 @@ const downloadHorarioExcel = async (url, fileDownloadPath) => {
 
     return new Promise((resolve, reject) => {
 
-        if (!fs.existsSync(parameters.directory)) {
-            fs.mkdirSync(parameters.directory, {
-                mode: 0o777
-            });
+        if (!directoryExists()) {
+            createFolder();
         }
 
         const file = fs.createWriteStream(fileDownloadPath);
@@ -63,6 +61,16 @@ const downloadHorarioExcel = async (url, fileDownloadPath) => {
             })
             .end();
     });
+}
+
+function createFolder() {
+  fs.mkdirSync(parameters.directory, {
+    mode: 0o777
+  });
+}
+
+function directoryExists() {
+  return fs.existsSync(parameters.directory);
 }
 
 module.exports = {
