@@ -36,6 +36,6 @@ module.exports = {
   scrapper,
 }
 function createHorarioFile(myHorario) {
-  fs.writeFileSync('horario.json', JSON.stringify(myHorario));
+  fs.writeFileSync('public/horario.json', JSON.stringify(myHorario));
 }
 
