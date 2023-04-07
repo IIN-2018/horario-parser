@@ -2,7 +2,7 @@ const { downloadHorarioExcel } = require('./api/download.js');
 const { scrapper } = require('./api/scrapper.js');
 const { parseExcel } = require('./api/excel2json.js');
 const fs = require('fs');
-const parameters = require('../config/parameters.js');
+const parameters = require('./config/parameters.js');
 
 const completeScrapperParser = async () => {
   return scrapper(parameters.url)
@@ -28,8 +28,7 @@ const completeScrapperParser = async () => {
     });
 }
 
-//scrapper(parameters.url).then(link => console.log(`Enlace obtenido: ${link}`));
-completeScrapperParser();
+
 
 module.exports = {
   completeScrapperParser,

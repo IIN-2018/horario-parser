@@ -1,12 +1,12 @@
 const fs = require('fs');
 const http = require('http');
 const https = require('https');
-const parameters = require('../../config/parameters');
+const parameters = require('../config/parameters.js');
 
 /**
- * 
+ *
  * @param {string} url Enlace del Horario de la Poli
- * @param {string} fileDownloadPath Path de donde sera descargado el excel 
+ * @param {string} fileDownloadPath Path de donde sera descargado el excel
  * @returns Promesa que al finalizar correctamente descarga el excel en el path indicado
  */
 const downloadHorarioExcel = async (url, fileDownloadPath) => {

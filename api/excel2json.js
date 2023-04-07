@@ -1,7 +1,7 @@
 const { find } = require('cheerio/lib/api/traversing.js');
 var xlsx = require('xlsx');
 
-const parameters = require('../../config/parameters.js');
+const parameters = require('../config/parameters.js');
 
 const columnsExcel = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
@@ -32,7 +32,7 @@ const convertHeaderToKey = (fileName, sheetName) => {
 
     // Usamos el isCellAtColumnZ para solo usar las columnas del A - Z
     // Ya que en el excel sigue AA - AB - etc
-    // La cual nosotros solo queremos de A - Z 
+    // La cual nosotros solo queremos de A - Z
     currentCell = isCellAtColumnZ ? 'A' + currentCell : currentCell;
 
     let worksheet = getSheet(workbook, sheetName);
@@ -40,7 +40,7 @@ const convertHeaderToKey = (fileName, sheetName) => {
     // De la hoja obtenemos por ejemplo A1
     let desiredCell = worksheet[currentCell];
 
-    //Cargamos el valor de la celda en caso de que exista con desiredCell.v 
+    //Cargamos el valor de la celda en caso de que exista con desiredCell.v
     desiredValue = (desiredCell ? desiredCell.v : undefined);
 
     // Agregamos el valor en caaso de que haya
@@ -215,7 +215,7 @@ const parseExcel = async () => {
       });
     }
 
-    //Si la carrera tiene mas de una enfasis, 
+    //Si la carrera tiene mas de una enfasis,
     //Se crea una nueva carrera por cada enfasis
     const carrerasConMasDeUnEnfasis = carreras.filter(carrera => {
       return carrera.enfasis != null && carrera.enfasis.length > 1;
@@ -262,4 +262,4 @@ function getExcel(fileName) {
 
 const removeAccents = (str) => {
   return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-} 
+}
